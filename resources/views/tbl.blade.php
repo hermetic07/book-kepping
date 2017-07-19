@@ -1,23 +1,22 @@
-<table class="table table-borderless" id="table">
-  <thead align="center">
-    <tr>
-      <th class="text-center">#</th>
-      <th class="text-center">Name</th>
-      <th class="text-center">Actions</th>
-    </tr>
+<table>
+  <thead>
   </thead>
-  @foreach($data as $item)
-  <tr class="item{{$item->id}}">
-    <td>{{$item->id}}</td>
-    <td>{{$item->name}}</td>
-    <td><button class="edit-modal btn btn-info" data-id="{{$item->id}}"
-        data-name="{{$item->name}}">
-        <span class="glyphicon glyphicon-edit"></span> Edit
-      </button>
-      <button class="delete-modal btn btn-danger"
-        data-id="{{$item->id}}" data-name="{{$item->name}}">
-        <span class="glyphicon glyphicon-trash"></span> Delete
-      </button></td>
-  </tr>
-  @endforeach
+
+  <tbody>
+    @foreach($client as $client )
+    <tr>
+      <td>Client ID</td>
+      <td>{{$client->id}}</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>{{$client->name}}</td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td>{{$client->address}}</td>
+    </tr>
+    @endforeach
+  </tbody>
+
 </table>

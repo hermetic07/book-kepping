@@ -7,6 +7,7 @@ use Validator;
 use Response;
 use App\Ledger;
 use App\Account;
+use App\Client;
 use Illuminate\Support\Facades\Input;
 use Exception;
 class ViewControl extends Controller
@@ -18,6 +19,49 @@ class ViewControl extends Controller
 	{
 		$titles = Account::All();
 		return view('Ledger')->with('a',$titles)->with('b',$titles)->with('c',$titles)->with('d',$titles)->with('e',$titles)->with('f',$titles)->with('g',$titles)->with('h',$titles)->with('i',$titles)->with('j',$titles);
+	}
+
+	public function test()
+	{
+		return view('test');
+	}
+
+	public function getClient(Request $request)
+	{
+
+			try {
+				$id = $request->id;
+				$client = Client::find($id);
+				$data = "";
+
+					$data= "<table>
+					  <thead>
+					  </thead>
+
+					  <tbody>
+
+					    <tr>
+					      <td>Client ID:</td>
+					      <td>"    .$client->id."</td>
+					    </tr>
+					    <tr>
+					      <td>Name:</td>
+					      <td>"    .$client->name."</td>
+					    </tr>
+					    <tr>
+					      <td>Address:</td>
+					      <td>"    .$client->address."</td>
+					    </tr>
+
+					  </tbody>
+
+					</table>";
+
+				return $data;
+			} catch (Exception $e) {
+				return($e);
+			}
+
 	}
 
 	public function generalLedger(Request $request)
